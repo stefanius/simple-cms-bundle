@@ -1,11 +1,8 @@
 {
-    "name": "setf/brigittavalentijn",
+    "name": "stef/simple-cms-bundle",
     "license": "Not decided yet",
     "type": "project",
-    "description": "Website and CMS for the youth Scouting Brigitta / Valentijn - The Hague - Netherlands",
-    "autoload": {
-        "psr-0": { "": "src/" }
-    },
+    "description": "Easy to use backoffice / CMS bundle",
     "repositories": [
         {
             "type": "package",
@@ -77,14 +74,7 @@
     "config": {
         "bin-dir": "bin"
     },
-    "extra": {
-        "symfony-app-dir": "app",
-        "symfony-web-dir": "web",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        },
-        "branch-alias": {
-            "dev-master": "2.4-dev"
-        }
+    "autoload": {
+        "psr-4": { "Stef\\SimpleCmsBundle\\": "src/Stef/SimpleCmsBundle/" }
     }
 }
