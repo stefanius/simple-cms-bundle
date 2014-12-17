@@ -1,0 +1,11 @@
+{% extends 'StefSimpleCmsBundle::layout.base.html.twig' %}
+
+{% block body %}
+
+    <form action="{{ path('stef_simple_cms_bundle_create', { 'mappingKey': mappingKey }) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+
+        {{ form_rest(form) }}
+        <input type="submit" value="Opslaan" />
+    </form>
+{% endblock %}

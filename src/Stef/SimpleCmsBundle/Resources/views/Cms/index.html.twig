@@ -1,0 +1,23 @@
+{% extends 'StefSimpleCmsBundle::layout.base.html.twig' %}
+
+{% block body %}
+
+    <table class="table table-hover">
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('stef_simple_cms_bundle_read', {'mappingKey' : mappingKey, 'search': entity.id }) }}">{{ entity.id|e }}</a></td>
+                <td>{{ entity.title }}</td>
+                <td>
+                    <a class="btn btn-danger" href="{{ path('stef_simple_cms_bundle_delete', {'mappingKey' : mappingKey, 'id': entity.id }) }}">Delete</a>
+                    <a class="btn btn-info" href="{{ path('stef_simple_cms_bundle_update', {'mappingKey' : mappingKey, 'id': entity.id }) }}">Update</a>
+                    <a class="btn btn-success" href="{{ path('stef_simple_cms_bundle_read', {'mappingKey' : mappingKey, 'search': entity.id }) }}">Read</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+
+
+
+{% endblock %}

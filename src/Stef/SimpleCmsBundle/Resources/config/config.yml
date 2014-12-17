@@ -1,0 +1,10 @@
+twig:
+    globals:
+        version: %app.version%
+        title: %app.title%
+        cmstitle: %app.cmstitle%
+        http_entrypoint: %app.http_entrypoint%
+        twitter_name: %app.twitter_name%
+        twitter_url: %app.twitter_url%
+        facebook_url: %app.facebook_url%
+        googleplus_url: %app.googleplus_url%

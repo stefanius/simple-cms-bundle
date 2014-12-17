@@ -1,0 +1,5 @@
+stef_simple_cms_bundle_cmsindex:
+    pattern:  /
+    defaults: { _controller: StefSimpleCmsBundle:Index:index }
+    requirements:
+        _method:  GET

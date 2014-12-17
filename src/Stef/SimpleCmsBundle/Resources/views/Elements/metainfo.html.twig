@@ -1,0 +1,31 @@
+{% if page.description is defined %}
+    <meta name="description" content="{{ page.description }}"/>
+    <meta property="og:description" content="{{ page.description }}" />
+    <meta name="twitter:description" content="{{ page.description }}"/>
+{% endif %}
+
+{% if page.canonical is defined %}
+    <link rel="canonical" href="{{ page.canonical }}" />
+    <meta property="og:url" content="{{ page.canonical }}" />
+{% else %}
+    <link rel="canonical" href="{{ app.request.uri }}" />
+    <meta property="og:url" content="{{ app.request.uri }}" />
+{% endif %}
+
+<meta property="og:locale" content="nl_NL" />
+<meta property="og:type" content="website" />
+
+{% if page.title is defined %}
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta name="twitter:title" content="{{ page.title }}"/>
+{% else %}
+    <meta property="og:title" content="{{ title }}" />
+    <meta name="twitter:title" content="{{ title }}"/>
+{% endif %}
+
+<meta property="og:site_name" content="{{ title }}" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@{{ twitter_name }}"/>
+<meta name="twitter:domain" content="{{ title }}"/>
+<meta name="twitter:creator" content="@{{ twitter_name }}"/>
+<link rel="home" href="{{ http_entrypoint }}" title="{{ title }}"/>

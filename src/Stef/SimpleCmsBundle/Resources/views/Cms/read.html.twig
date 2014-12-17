@@ -1,0 +1,16 @@
+{% extends 'StefSimpleCmsBundle::layout.base.html.twig' %}
+
+{% block body %}
+
+        {% for r in reflected %}
+            <h2>{{ r.name|e }}</h2>
+
+            {% if attribute(entity, r.name).timestamp is defined %}
+                <div class="well">{{ attribute(entity, r.name)|date('Y-m-d H:i:s') }}</div>
+            {% else %}
+                <div class="well">{{ attribute(entity, r.name) }}</div>
+            {% endif %}
+
+        {% endfor %}
+
+{% endblock %}

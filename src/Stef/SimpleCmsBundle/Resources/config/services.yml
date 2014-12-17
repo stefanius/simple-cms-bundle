@@ -1,0 +1,90 @@
+#stef.tmp:
+#  config:
+#    toolbar:
+#      - [name: "basicitems", items: ["source"]]
+#      - [name: "basicstyles", items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']]
+#    uiColor: '#ffffff'
+parameters:
+    stef_simple_cms.twig.asset_exists_extension.class: Stef\SimpleCmsBundle\Twig\Extension\AssetExistsExtension
+    stef.slugifier.class: Stef\SlugManipulation\Manipulators\SlugManipulator
+    stef.fullpath_slugifier.class: Stef\SlugManipulation\Manipulators\FullpathSlugManipulator
+    stef_simple_cms.reflection.class: Stef\SimpleCmsBundle\Reflection\ReflectionService
+    stef_simple_cms.dictionary_manager.class: Stef\SimpleCmsBundle\Manager\DictionaryManager
+
+services:
+    stef.slugifier:
+        class: %stef.slugifier.class%
+
+    stef.fullpath_slugifier:
+        class:     %stef.fullpath_slugifier.class%
+        arguments: ["@stef.slugifier"]
+
+    stef_simple_cms.reflection:
+        class: %stef_simple_cms.reflection.class%
+
+    stef_simple_cms.news_manager:
+        class: Stef\SimpleCmsBundle\Manager\NewsManager
+        arguments: ["@doctrine.orm.entity_manager"]
+        calls:
+            - [setSlugifier, ["@stef.slugifier"]]
+
+    stef_simple_cms.dictionary_manager:
+        class: %stef_simple_cms.dictionary_manager.class%
+        arguments: ["@doctrine.orm.entity_manager"]
+        calls:
+            - [setSlugifier, ["@stef.slugifier"]]
+
+    stef_simple_cms.page_manager:
+        class: Stef\SimpleCmsBundle\Manager\PageManager
+        arguments: ["@doctrine.orm.entity_manager"]
+        calls:
+            - [setSlugifier, ["@stef.slugifier"]]
+
+    stef_simple_cms.form_factory:
+        class: Stef\SimpleCmsBundle\Form\FormFactory
+        arguments: ["@stef_simple_cms.reflection", "@form.factory"]
+
+    stef_simple_cms.form_options:
+        class: Stef\SimpleCmsBundle\Form\FormOptions
+        calls:
+            - [addOptions, ['page', 'body', [], 'ckeditor']]
+            - [addOptions, ['news', 'body', [], 'ckeditor']]
+            - [addOptions, ['dictionary', 'body', [], 'ckeditor']]
+            - [addOptions, ['news', 'slug', [], 'hidden']]
+
+    stef_simple_cms.entity_mapper:
+        class: Stef\SimpleCmsBundle\EntityMapper\Mapper
+        calls:
+            - [addNewMapping, ["News", "StefSimpleCmsBundle", "Stef\SimpleCmsBundle\Entity", "@stef_simple_cms.news_manager"]]
+            - [addNewMapping, ["Page", "StefSimpleCmsBundle", "Stef\SimpleCmsBundle\Entity", "@stef_simple_cms.page_manager"]]
+            - [addNewMapping, ["Dictionary", "StefSimpleCmsBundle", "Stef\SimpleCmsBundle\Entity", "@stef_simple_cms.dictionary_manager"]]
+
+    stef_simple_cms.crud_renderer:
+        class: Stef\SimpleCmsBundle\Crud\DefaultCrudRenderer
+        arguments: ["@templating", "@router"]
+
+    stef_simple_cms.crud_actions:
+        class: Stef\SimpleCmsBundle\Crud\DefaultCrudActions
+        arguments: ["@stef_simple_cms.entity_mapper", "@stef_simple_cms.crud_renderer", "@stef_simple_cms.form_options", "@stef_simple_cms.form_factory"]
+
+    stef_simple_cms.twig.asset_exists_extension:
+        class: '%stef_simple_cms.twig.asset_exists_extension.class%'
+        arguments: ['@kernel']
+        tags:
+          - { name: twig.extension }
+
+    stef_key_value.to_array:
+        class: Stef\KeyValueManipulation\Manipulators\KeyValueToArrayManipulator
+        arguments: [':', ';']
+
+    stef_key_value.to_json:
+        class: Stef\KeyValueManipulation\Manipulators\KeyValueToJsonManipulator
+        arguments: [':', ';']
+
+    stef_key_value.to_parameterbag:
+        class: Stef\KeyValueManipulation\Manipulators\KeyValueToParameterBagManipulator
+        arguments: [':', ';']
+
+    stef_simple_cms.key_value_parser:
+        class: Stef\SimpleCmsBundle\KeyValueParser\Parser
+        arguments: ['@stef_key_value.to_array', '@stef_key_value.to_json', '@stef_key_value.to_parameterbag']
