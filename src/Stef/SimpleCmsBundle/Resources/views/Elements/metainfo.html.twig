@@ -1,4 +1,4 @@
-{% if page.description is defined %}
+{% if page.description is defined and page.description|length > 5 %}
     <meta name="description" content="{{ page.description }}"/>
     <meta property="og:description" content="{{ page.description }}" />
     <meta name="twitter:description" content="{{ page.description }}"/>
