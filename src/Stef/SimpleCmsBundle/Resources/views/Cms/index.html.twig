@@ -4,6 +4,13 @@
 
     <table class="table table-hover">
         {% for entity in entities %}
+
+            <tr>
+                {% for ch in listView.GetListHeaders %}
+                    <th>{{ ch }}</th>
+                {% endfor %}
+            </tr>
+
             <tr>
                 <td><a href="{{ path('stef_simple_cms_bundle_read', {'mappingKey' : mappingKey, 'search': entity.id }) }}">{{ entity.id|e }}</a></td>
                 {% for c in listView.GetVisibleProperties %}
