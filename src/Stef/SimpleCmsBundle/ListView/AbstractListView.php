@@ -11,7 +11,7 @@ abstract class AbstractListView implements ListViewInterface
     function __construct()
     {
         $this->properties = $this->initProperties();
-        $this->headers = $this->initHeaders();
+        $this->listHeaders = $this->initHeaders();
     }
 
     public function getVisibleProperties()
