@@ -6,6 +6,8 @@ use Stef\SimpleCmsBundle\EntityMapper\Mapper;
 use Stef\SimpleCmsBundle\EntityMapper\Mapping;
 use Stef\SimpleCmsBundle\Form\FormFactory;
 use Stef\SimpleCmsBundle\Form\FormOptions;
+use Stef\SimpleCmsBundle\ListView\ListViewInterface;
+use Stef\SimpleCmsBundle\ListView\ListViewService;
 use Stef\SimpleCmsBundle\Reflection\ReflectionService;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -31,12 +33,18 @@ class DefaultCrudActions
      */
     protected $mapper;
 
-    function __construct(Mapper $mapper, DefaultCrudRenderer $crudRenderer, FormOptions $formOptions, FormFactory $formFactory)
+    /**
+     * @var ListViewService
+     */
+    protected $listViewService;
+
+    function __construct(Mapper $mapper, DefaultCrudRenderer $crudRenderer, FormOptions $formOptions, FormFactory $formFactory, ListViewService $listViewService)
     {
         $this->mapper = $mapper;
         $this->crudRenderer = $crudRenderer;
         $this->formOptions = $formOptions;
         $this->formFactory = $formFactory;
+        $this->listViewService = $listViewService;
     }
 
     /**
@@ -124,7 +132,8 @@ class DefaultCrudActions
         return $this->crudRenderer->renderIndexView([
             'entities' => $entities,
             'mappingKey' => $mappingKey,
-            'mappingKeys' => $this->mapper->getMappingKeys()
+            'mappingKeys' => $this->mapper->getMappingKeys(),
+            'listView' => $this->listViewService->getView($mappingKey)
         ]);
     }
 } 

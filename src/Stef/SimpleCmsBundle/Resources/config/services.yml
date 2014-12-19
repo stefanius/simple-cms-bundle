@@ -28,6 +28,14 @@ services:
         calls:
             - [setSlugifier, ["@stef.slugifier"]]
 
+    stef_simple_cms.news_list_view:
+        class: Stef\SimpleCmsBundle\ListView\NewsListView
+
+    stef_simple_cms.list_view_service:
+        class: Stef\SimpleCmsBundle\ListView\ListViewService
+        calls:
+            - [addView, [news, "@stef_simple_cms.news_list_view"]]
+
     stef_simple_cms.dictionary_manager:
         class: %stef_simple_cms.dictionary_manager.class%
         arguments: ["@doctrine.orm.entity_manager"]
