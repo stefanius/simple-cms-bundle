@@ -5,11 +5,12 @@
     <table class="table table-hover">
         {% for entity in entities %}
             <tr>
+                <td><a href="{{ path('stef_simple_cms_bundle_read', {'mappingKey' : mappingKey, 'search': entity.id }) }}">{{ entity.id|e }}</a></td>
                 {% for c in listView.GetVisibleProperties %}
 
-                    <td><a href="{{ path('stef_simple_cms_bundle_read', {'mappingKey' : mappingKey, 'search': entity.id }) }}">{{ entity.id|e }}</a></td>
-
                     {% if attribute(entity, c).timestamp is defined %}
+                        <td>{{ attribute(entity, c)|date('Y-m-d H:i:s') }}</td>
+                    {% else %}
                         <td>{{ attribute(entity, c) }}</td>
                     {% endif %}
 
@@ -23,9 +24,5 @@
             </tr>
         {% endfor %}
     </table>
-
-
-
-
 
 {% endblock %}

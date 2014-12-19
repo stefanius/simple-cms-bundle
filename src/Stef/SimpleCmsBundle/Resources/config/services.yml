@@ -73,7 +73,7 @@ services:
 
     stef_simple_cms.crud_actions:
         class: Stef\SimpleCmsBundle\Crud\DefaultCrudActions
-        arguments: ["@stef_simple_cms.entity_mapper", "@stef_simple_cms.crud_renderer", "@stef_simple_cms.form_options", "@stef_simple_cms.form_factory"]
+        arguments: ["@stef_simple_cms.entity_mapper", "@stef_simple_cms.crud_renderer", "@stef_simple_cms.form_options", "@stef_simple_cms.form_factory", "@stef_simple_cms.list_view_service"]
 
     stef_simple_cms.twig.asset_exists_extension:
         class: '%stef_simple_cms.twig.asset_exists_extension.class%'
