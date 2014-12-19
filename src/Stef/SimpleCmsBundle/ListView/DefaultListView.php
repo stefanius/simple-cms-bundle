@@ -18,7 +18,6 @@ class DefaultListView extends AbstractListView
         return [
             'id' => 'ID',
             'title' => 'Titel',
-            'slug' => 'Slug',
             'created' => 'Aangemaakt',
             'modified' => 'Bewerkt'
         ];
