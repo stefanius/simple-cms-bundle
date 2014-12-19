@@ -7,7 +7,6 @@ class NewsListView extends AbstractListView
     protected function initProperties()
     {
         return [
-            'id',
             'title',
             'slug',
             'created',

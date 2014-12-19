@@ -7,7 +7,6 @@ class DefaultListView extends AbstractListView
     protected function initProperties()
     {
         return [
-            'id',
             'title',
             'created',
             'modified'
