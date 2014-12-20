@@ -2,7 +2,7 @@
 
 namespace Stef\SimpleCmsBundle\ListView;
 
-class NewsListView extends AbstractListView
+class PageListView extends AbstractListView
 {
     protected function initProperties()
     {
