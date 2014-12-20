@@ -19,6 +19,18 @@ class ReflectionService
      */
     public function getProperties($object)
     {
-        return $this->reflect($object)->getProperties();
+        $props = $this->reflect($object)->getProperties();
+
+        $filteredProps = [];
+
+        foreach ($props as $prop) {
+            if ($this->reflect($object)->hasMethod('get' . $prop->getName())) {
+                $filteredProps[] = $prop;
+            }  elseif($this->reflect($object)->hasMethod('is' . $prop->getName())) {
+                $filteredProps[] = $prop;
+            }
+        }
+
+        return $filteredProps;
     }
 } 
