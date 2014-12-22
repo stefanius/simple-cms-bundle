@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    <title>BV Backoffice :: {% block title %} CMS {% endblock %}</title>
+    <title>{{ cmstitle }} :: {% block title %} CMS {% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
@@ -24,7 +24,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/cms">BVBackoffice</a>
+                    <a class="navbar-brand" href="/cms">{{ cmstitle }}</a>
                     <ul class="nav navbar-nav">
                         {% for key in mappingKeys %}
                             <li class="dropdown">
