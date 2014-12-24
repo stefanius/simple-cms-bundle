@@ -33,6 +33,16 @@ abstract class AbstractCmsContent {
     protected $description;
 
     /**
+     * @ORM\Column(type="bool", options={"default": true})
+     */
+    protected $robotsIndex;
+
+    /**
+     * @ORM\Column(type="bool", options={"default": true})
+     */
+    protected $robotsFollow;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     protected $created;
@@ -46,6 +56,8 @@ abstract class AbstractCmsContent {
     {
         $this->setCreated(new \DateTime());
         $this->setModified(new \DateTime());
+        $this->robotsFollow = true;
+        $this->robotsIndex = true;
     }
 
     /**
@@ -155,7 +167,7 @@ abstract class AbstractCmsContent {
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getDescription()
     {
@@ -163,12 +175,42 @@ abstract class AbstractCmsContent {
     }
 
     /**
-     * @param mixed $description
+     * @param string $description
      */
     public function setDescription($description)
     {
         $this->description = $description;
     }
 
+    /**
+     * @return boolean
+     */
+    public function getRobotsIndex()
+    {
+        return $this->robotsIndex;
+    }
 
+    /**
+     * @param boolean $robotsIndex
+     */
+    public function setRobotsIndex($robotsIndex)
+    {
+        $this->robotsIndex = $robotsIndex;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getRobotsFollow()
+    {
+        return $this->robotsFollow;
+    }
+
+    /**
+     * @param boolean $robotsFollow
+     */
+    public function setRobotsFollow($robotsFollow)
+    {
+        $this->robotsFollow = $robotsFollow;
+    }
 }
