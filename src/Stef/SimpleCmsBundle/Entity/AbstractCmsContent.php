@@ -33,12 +33,12 @@ abstract class AbstractCmsContent {
     protected $description;
 
     /**
-     * @ORM\Column(type="bool", options={"default": true})
+     * @ORM\Column(type="boolean", options={"default": true})
      */
     protected $robotsIndex;
 
     /**
-     * @ORM\Column(type="bool", options={"default": true})
+     * @ORM\Column(type="boolean", options={"default": true})
      */
     protected $robotsFollow;
 
@@ -185,7 +185,7 @@ abstract class AbstractCmsContent {
     /**
      * @return boolean
      */
-    public function getRobotsIndex()
+    public function isRobotsIndex()
     {
         return $this->robotsIndex;
     }
@@ -201,7 +201,7 @@ abstract class AbstractCmsContent {
     /**
      * @return boolean
      */
-    public function getRobotsFollow()
+    public function isRobotsFollow()
     {
         return $this->robotsFollow;
     }
