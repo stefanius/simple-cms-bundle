@@ -8,7 +8,7 @@
 {% endif %}
 
 {% if page.robotsFollow is defined %}
-    {% if page.robotsFollow === true %}
+    {% if page.robotsFollow == true %}
         {% set follow = 'FOLLOW' %}
     {% else %}
         {% set follow = 'NOFOLLOW' %}
@@ -16,7 +16,7 @@
 {% endif %}
 
 {% if page.robotsIndex is defined %}
-    {% if page.robotsIndex === true %}
+    {% if page.robotsIndex == true %}
         {% set index = 'INDEX' %}
     {% else %}
         {% set index = 'NOINDEX' %}
