@@ -1,8 +1,29 @@
+{% set follow = 'FOLLOW' %}
+{% set index = 'INDEX' %}
+
 {% if page.description is defined and page.description|length > 5 %}
     <meta name="description" content="{{ page.description }}"/>
     <meta property="og:description" content="{{ page.description }}" />
     <meta name="twitter:description" content="{{ page.description }}"/>
 {% endif %}
+
+{% if page.robotsFollow is defined %}
+    {% if page.robotsFollow === true %}
+        {% set follow = 'FOLLOW' %}
+    {% else %}
+        {% set follow = 'NOFOLLOW' %}
+    {% endif %}
+{% endif %}
+
+{% if page.robotsIndex is defined %}
+    {% if page.robotsIndex === true %}
+        {% set index = 'INDEX' %}
+    {% else %}
+        {% set index = 'NOINDEX' %}
+    {% endif %}
+{% endif %}
+
+<meta name="robots" content="{{ index }}, {{ follow }}">
 
 {% if page.canonical is defined %}
     <link rel="canonical" href="{{ page.canonical }}" />
