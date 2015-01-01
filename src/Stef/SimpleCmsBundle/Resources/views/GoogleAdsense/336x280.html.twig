@@ -1,5 +1,1 @@
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:inline-block;width:336px;height:280px"
-     data-ad-client="{{ pubid }}"
-     data-ad-slot="{{ slotid }}"></ins>
+{% include 'StefSimpleCmsBundle:GoogleAdsense:base.html.twig' with {'width': '336', 'height': '280', 'pubid': pubid, 'slotid': slotid} %}
