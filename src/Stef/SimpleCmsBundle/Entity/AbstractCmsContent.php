@@ -35,12 +35,12 @@ abstract class AbstractCmsContent {
     /**
      * @ORM\Column(type="boolean", options={"default": true})
      */
-    protected $robotsIndex;
+    protected $robotsIndex = true;
 
     /**
      * @ORM\Column(type="boolean", options={"default": true})
      */
-    protected $robotsFollow;
+    protected $robotsFollow = true;
 
     /**
      * @ORM\Column(type="datetime")
@@ -56,8 +56,6 @@ abstract class AbstractCmsContent {
     {
         $this->setCreated(new \DateTime());
         $this->setModified(new \DateTime());
-        $this->robotsFollow = true;
-        $this->robotsIndex = true;
     }
 
     /**
