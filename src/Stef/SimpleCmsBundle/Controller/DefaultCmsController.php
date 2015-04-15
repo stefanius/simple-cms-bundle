@@ -41,7 +41,14 @@ class DefaultCmsController extends BaseController
      */
     public function indexAction(Request $request, $mappingKey)
     {
-        $entities = $this->getRepository($this->getEntityMapping($mappingKey)->getRepoSelector())->findAll();
+        $page = $request->query->get('page');
+        $limit = $request->query->get('limit');
+
+        if ($page < 1) {
+            $page = 1;
+        }
+
+        $entities = $this->getRepository($this->getEntityMapping($mappingKey)->getRepoSelector())->findBy([], [], $limit, (($page - 1) * $limit));
 
         return $this->getDefaultCrudActions()->index($mappingKey, $entities);
     }
