@@ -44,11 +44,31 @@ class DefaultCmsController extends BaseController
         $page = $request->query->get('page');
         $limit = $request->query->get('limit');
 
+        $filter = $request->query->all();
+
+        unset($filter['page']);
+        unset($filter['limit']);
+        unset($filter['filter']);
+
         if ($page < 1) {
             $page = 1;
         }
 
-        $entities = $this->getRepository($this->getEntityMapping($mappingKey)->getRepoSelector())->findBy([], [], $limit, (($page - 1) * $limit));
+        if (count($filter) == 0) {
+            $entities = $this->getRepository($this->getEntityMapping($mappingKey)->getRepoSelector())->findBy([], [], $limit, (($page - 1) * $limit));
+        } else {
+            //$qb = $this->getEntityManager()->createQueryBuilder('e');
+            $qb = $this->getRepository($this->getEntityMapping($mappingKey)->getRepoSelector())->createQueryBuilder('e');
+
+
+
+            foreach ($filter as $key => $value) {
+                $qb->where('e.' . $key . ' LIKE :' . $key);
+                $qb->setParameter($key, $value);
+            }
+
+            $entities = $qb->getQuery()->getResult();
+        }
 
         return $this->getDefaultCrudActions()->index($mappingKey, $entities);
     }

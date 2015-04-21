@@ -10,10 +10,21 @@
             <th>Actions</th>
         </tr>
 
+        <tr>
+            <th><input type="text" name="search[id]" class="form-control searchfilter"></th>
+
+            {% for ch in listView.GetVisibleProperties %}
+                <th><input type="text" name="search[{{ ch|lower }}]" class="form-control searchfilter"></th>
+            {% endfor %}
+
+            <th><a class="btn btn-success" onClick="filter();">Filter</a></th>
+        </tr>
+
         {% for entity in entities %}
 
             <tr>
                 <td><a href="{{ path('stef_simple_cms_bundle_read', {'mappingKey' : mappingKey, 'search': entity.id }) }}">{{ entity.id|e }}</a></td>
+
                 {% for c in listView.GetVisibleProperties %}
 
                     {% if attribute(entity, c) is defined %}
@@ -35,4 +46,20 @@
         {% endfor %}
     </table>
 
+    <script>
+        function filter() {
+            var boxes = document.getElementsByClassName('searchfilter');
+            var filterstring = '';
+
+            for (i = 0; i < boxes.length; i++) {
+                if (boxes[i].value.length > 0) {
+                    var name = boxes[i].name.replace('search', '').replace('[', '').replace(']', '');
+                    filterstring = filterstring + '&' + name + '=' + boxes[i].value;
+                }
+            }
+
+            window.location = '?filter=true' + filterstring;
+        }
+
+    </script>
 {% endblock %}
