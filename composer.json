@@ -35,7 +35,6 @@
         "jms/serializer-bundle": "0.13.*@dev",
         "nelmio/alice": "v1.6.0",
         "egeloen/ckeditor-bundle": "~2.0",
-
         "stef/crud-contract": "dev-master",
         "stef/manipulation": "dev-master",
         "stef/slug-manipulation": "dev-master",
