@@ -38,7 +38,7 @@
                 {% endfor %}
 
                 <td>
-                    <a class="btn btn-danger" href="{{ path('stef_simple_cms_bundle_delete', {'mappingKey' : mappingKey, 'id': entity.id }) }}">Delete</a>
+                    <a class="btn btn-danger" onclick="confirmDelete('{{ path('stef_simple_cms_bundle_delete', {'mappingKey' : mappingKey, 'id': entity.id }) }}', {{ entity.id }})" href="#">Delete</a>
                     <a class="btn btn-info" href="{{ path('stef_simple_cms_bundle_update', {'mappingKey' : mappingKey, 'id': entity.id }) }}">Update</a>
                     <a class="btn btn-success" href="{{ path('stef_simple_cms_bundle_read', {'mappingKey' : mappingKey, 'search': entity.id }) }}">Read</a>
                 </td>
@@ -59,6 +59,20 @@
             }
 
             window.location = '?filter=true' + filterstring;
+        }
+
+        function confirmDelete(url, id) {
+            var check = prompt("Are you sure to delete the selected entity? Enter the correct ID to confirm this action. A removed item can not be undone.", "-99");
+
+            if (id == check) {
+                alert(url);
+                window.location.href = url;
+                return true;
+            } else {
+                alert('The operation is cancelled. The item will not be removed.');
+                return false;
+            }
+
         }
 
     </script>
