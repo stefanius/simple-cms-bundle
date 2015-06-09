@@ -23,7 +23,7 @@
     "require": {
         "php": ">=5.5",
         "phpunit/phpunit": "~4.1",
-        "twig/extensions": "~1.0",
+        "twig/extensions": "~1.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "twbs/bootstrap": "3.0.*",
