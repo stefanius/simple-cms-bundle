@@ -35,7 +35,6 @@
         "stef/manipulation": "dev-master",
         "stef/slug-manipulation": "dev-master",
         "stef/key-value-manipulation": "dev-master",
-        "stef/generate-fixtures-bundle": "dev-master",
         "egeloen/google-map-bundle": "~2.2"
     },
     "scripts": {
