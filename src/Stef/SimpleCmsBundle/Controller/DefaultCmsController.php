@@ -54,7 +54,7 @@ class DefaultCmsController extends BaseController
             $page = 1;
         }
 
-        if (isEmpty($limit) || !is_numeric($limit) || $limit < 1) {
+        if (!empty($limit) || !is_numeric($limit) || $limit < 1) {
             $limit = 15;
         }
 
