@@ -54,6 +54,10 @@ class DefaultCmsController extends BaseController
             $page = 1;
         }
 
+        if (isEmpty($limit) || !is_numeric($limit) || $limit < 1) {
+            $limit = 15;
+        }
+
         if (count($filter) == 0) {
             $entities = $this->getRepository($this->getEntityMapping($mappingKey)->getRepoSelector())->findBy([], [], $limit, (($page - 1) * $limit));
         } else {
