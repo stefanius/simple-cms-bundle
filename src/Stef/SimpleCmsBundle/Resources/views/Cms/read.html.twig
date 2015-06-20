@@ -7,10 +7,25 @@
 
             {% if attribute(entity, r.name).timestamp is defined %}
                 <div class="well">{{ attribute(entity, r.name)|date('Y-m-d H:i:s') }}</div>
-            {% elseif attribute(entity, r.name).slug is defined %}
+            {% else if attribute(entity, r.name).slug is defined %}
                     <div class="well">{{ attribute(entity, r.name).slug }}</div>
-            {% elseif attribute(entity, r.name).id is defined %}
+            {% else if attribute(entity, r.name).id is defined %}
                 <div class="well">{{ attribute(entity, r.name).id }}</div>
+            {% else if attribute(entity, r.name).getIterator is defined and attribute(entity, r.name).map is defined attribute(entity, r.name).next is defined attribute(entity, r.name).isDirty is defined %} {# dirty check for instanceof Doctrine\ORM\PersistentCollection #}
+
+                {% for x in attribute(entity, r.name) %}
+                    {% if attribute(entity, x.name).timestamp is defined %}
+                        <div class="well">{{ attribute(entity, x.name)|date('Y-m-d H:i:s') }}</div>
+                    {% else if attribute(entity, x.name).slug is defined %}
+                        <div class="well">{{ attribute(entity, r.name).slug }}</div>
+                    {% else if attribute(entity, x.name).id is defined %}
+                        <div class="well">{{ attribute(entity, x.name).id }}</div>
+                    {% else %}
+                        <div class="well">{{ attribute(entity, x.name) }}</div>
+                    {% endif %}
+
+                {% endfor %}
+
             {% else %}
                 <div class="well">{{ attribute(entity, r.name) }}</div>
             {% endif %}
@@ -18,3 +33,4 @@
         {% endfor %}
 
 {% endblock %}
+
