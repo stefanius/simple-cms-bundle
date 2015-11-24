@@ -14,14 +14,14 @@
         {% elseif (attribute(entity, r.name).getIterator is defined) and (attribute(entity, r.name).map is defined) and (attribute(entity, r.name).next is defined) and (attribute(entity, r.name).isDirty is defined) %} {# dirty check for instanceof Doctrine\ORM\PersistentCollection #}
 
             {% for x in attribute(entity, r.name) %}
-                {% if attribute(entity, x.name).timestamp is defined %}
-                    <div class="well">{{ attribute(entity, x.name)|date('Y-m-d H:i:s') }}</div>
-                {% elseif attribute(entity, x.name).slug is defined %}
-                    <div class="well">{{ attribute(entity, r.name).slug }}</div>
-                {% elseif attribute(entity, x.name).id is defined %}
-                    <div class="well">{{ attribute(entity, x.name).id }}</div>
+                {% if x.timestamp is defined %}
+                    <div class="well">x|date('Y-m-d H:i:s') }}</div>
+                {% elseif x.slug is defined %}
+                    <div class="well">{{ x.slug }}</div>
+                {% elseif x.id is defined %}
+                    <div class="well">x.id }}</div>
                 {% else %}
-                    <div class="well">{{ attribute(entity, x.name) }}</div>
+                    <div class="well">{{ x }}</div>
                 {% endif %}
 
             {% endfor %}
