@@ -35,7 +35,8 @@
         "stef/manipulation": "dev-master",
         "stef/slug-manipulation": "dev-master",
         "stef/key-value-manipulation": "dev-master",
-        "egeloen/google-map-bundle": "~2.2"
+        "egeloen/google-map-bundle": "~2.2",
+        "jms/serializer-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
