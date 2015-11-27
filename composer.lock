@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "01b54fb459c69ce69c587b85eb1f0299",
-    "content-hash": "550bca219a0c585ac556980bcb31395e",
+    "hash": "70569e0097c7a43e463147a4038b262e",
+    "content-hash": "5d6e5efe8bd29d33c55c796d97c3bc25",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -3690,10 +3690,10 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
-        "jms/serializer-bundle": 20,
         "stef/manipulation": 20,
         "stef/slug-manipulation": 20,
-        "stef/key-value-manipulation": 20
+        "stef/key-value-manipulation": 20,
+        "jms/serializer-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

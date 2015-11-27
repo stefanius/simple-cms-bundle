@@ -17,7 +17,7 @@ class AssetExistsExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'asset_exists' => new \Twig_Function_Method($this, 'asset_exists'),
+            'asset_exists' => new \Twig_SimpleFunction($this, 'asset_exists'),
         );
     }
 
