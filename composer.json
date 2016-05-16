@@ -14,10 +14,6 @@
                     "type": "file"
                 }
             }
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/stefanius/generate-fixtures-bundle"
         }
     ],
     "require": {
