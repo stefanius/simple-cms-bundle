@@ -3,8 +3,7 @@
 namespace Stef\SimpleCmsBundle\Manager;
 
 use Doctrine\Entity;
-use Stef\SimpleCmsBundle\Entity\News;
-use Stef\SlugManipulation\Manipulators\SlugManipulator;
+use Stefanius\Slugifier\Manipulators\SlugManipulator;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 class UserManager extends AbstractObjectManager {
