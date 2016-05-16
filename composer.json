@@ -10,7 +10,7 @@
                 "name": "jquery/jquery",
                 "version": "1.10.2",
                 "dist": {
-                    "url": "http://code.jquery.com/jquery-1.10.2.js",
+                    "url": "https://code.jquery.com/jquery-1.10.2.js",
                     "type": "file"
                 }
             }
@@ -31,7 +31,7 @@
         "braincrafted/bootstrap-bundle": "~2.1",
         "nelmio/alice": "v1.6.0",
         "egeloen/ckeditor-bundle": "~2.0",
-        "stef/manipulation": "dev-master",
+        "stefanius/manipulation": "~0",
         "stef/slug-manipulation": "dev-master",
         "stef/key-value-manipulation": "dev-master",
         "egeloen/google-map-bundle": "~2.2",
