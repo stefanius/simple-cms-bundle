@@ -34,7 +34,6 @@
         "stefanius/manipulation": "~0",
         "stef/slug-manipulation": "dev-master",
         "stef/key-value-manipulation": "dev-master",
-        "egeloen/google-map-bundle": "~2.2",
         "jms/serializer-bundle": "dev-master"
     },
     "scripts": {
