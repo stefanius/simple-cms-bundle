@@ -23,6 +23,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "twbs/bootstrap": "~3.3",
+        "symfony/form": "~3.0",
         "jquery/jquery":  "1.10.*",
         "braincrafted/bootstrap-bundle": "~2.1",
         "nelmio/alice": "~2.0",

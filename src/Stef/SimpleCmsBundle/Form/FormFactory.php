@@ -29,7 +29,7 @@ class FormFactory
         $dynamic->setName('test');
         $dynamic->setFormOptionsArray($formOptionsArray);
 
-        return $this->factory->create($dynamic, $entity);;
+        return $this->factory->create(DynamicType::class, $entity);
     }
 
     protected function readAllPropertiesFromEntity($entity)
