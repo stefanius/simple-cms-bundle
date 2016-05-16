@@ -1,29 +1,29 @@
 stef_simple_cms_bundle_create:
-    pattern:  /{mappingKey}/add
+    path:  /{mappingKey}/add
     defaults: { _controller: StefSimpleCmsBundle:DefaultCms:create }
     requirements:
         methods:  GET|POST
 
 stef_simple_cms_bundle_update:
-    pattern:  /{mappingKey}/{id}
+    path:  /{mappingKey}/{id}
     defaults: { _controller: StefSimpleCmsBundle:DefaultCms:update }
     requirements:
         methods:  GET|POST
 
 stef_simple_cms_bundle_read:
-    pattern:  /{mappingKey}/read/{search}
+    path:  /{mappingKey}/read/{search}
     defaults: { _controller: StefSimpleCmsBundle:DefaultCms:read }
     requirements:
         methods:  GET
 
 stef_simple_cms_bundle_delete:
-    pattern:  /{mappingKey}/delete/{id}
+    path:  /{mappingKey}/delete/{id}
     defaults: { _controller: StefSimpleCmsBundle:DefaultCms:delete }
     requirements:
         methods:  GET
 
 stef_simple_cms_bundle_index:
-    pattern:  /{mappingKey}
+    path:  /{mappingKey}
     defaults: { _controller: StefSimpleCmsBundle:DefaultCms:index }
     requirements:
         methods:  GET
