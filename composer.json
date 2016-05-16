@@ -28,7 +28,7 @@
         "nelmio/alice": "~2.0",
         "egeloen/ckeditor-bundle": "~2.0",
         "stefanius/manipulation": "~0",
-        "stef/slug-manipulation": "dev-master",
+        "stefanius/slugifier": "~0",
         "stef/key-value-manipulation": "dev-master",
         "jms/serializer-bundle": "dev-master"
     },
