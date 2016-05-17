@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "17621f5e3804cf4d7cf365d89066b144",
-    "content-hash": "a9b7b72dc7717cd101037dcbf8977c1e",
+    "hash": "815d9ac971956051ce6fa394a130906b",
+    "content-hash": "419824c0c3f88c4695279e729e5cd80d",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -1021,44 +1021,6 @@
                 "psr-3"
             ],
             "time": "2012-12-21 11:40:51"
-        },
-        {
-            "name": "stef/key-value-manipulation",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stefanius/KeyValueManipulation.git",
-                "reference": "5f549ed6a0f76563164b15ccda35f42a6ec17ee7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stefanius/KeyValueManipulation/zipball/5f549ed6a0f76563164b15ccda35f42a6ec17ee7",
-                "reference": "5f549ed6a0f76563164b15ccda35f42a6ec17ee7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4",
-                "stefanius/manipulation": "~0",
-                "symfony/http-foundation": ">=2.5"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.3.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Stef\\KeyValueManipulation\\": "src/Stef/KeyValueManipulation/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Stefanius",
-                    "email": "sgrootveld@gmail.com"
-                }
-            ],
-            "description": "Convert a key / value paired string in a traversable object.",
-            "time": "2016-05-16 13:07:42"
         },
         {
             "name": "stefanius/manipulation",
@@ -4202,7 +4164,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
-        "stef/key-value-manipulation": 20,
         "jms/serializer-bundle": 20
     },
     "prefer-stable": false,

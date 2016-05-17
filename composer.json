@@ -29,7 +29,6 @@
         "egeloen/ckeditor-bundle": "~2.0",
         "stefanius/manipulation": "~0",
         "stefanius/slugifier": "~0",
-        "stef/key-value-manipulation": "dev-master",
         "jms/serializer-bundle": "dev-master"
     },
     "require-dev": {
