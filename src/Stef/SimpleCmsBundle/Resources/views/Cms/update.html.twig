@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <form action="{{ path('stef_simple_cms_bundle_update', { 'mappingKey': mappingKey, 'id': entity.id }) }}" method="post" {{ form_enctype(form) }} class="blogger">
+    <form action="{{ path('stef_simple_cms_bundle_update', { 'mappingKey': mappingKey, 'id': entity.id }) }}" method="post" class="blogger">
         {{ form_errors(form) }}
 
         {{ form_rest(form) }}
