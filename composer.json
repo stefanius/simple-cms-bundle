@@ -1,7 +1,7 @@
 {
     "name": "stefanius/simple-cms-bundle",
     "license": "MIT",
-    "type": "project",
+    "type": "library",
     "description": "Easy to use backoffice / CMS bundle",
     "repositories": [
         {
