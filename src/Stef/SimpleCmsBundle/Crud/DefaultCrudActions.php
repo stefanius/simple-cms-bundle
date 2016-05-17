@@ -37,14 +37,12 @@ class DefaultCrudActions extends Controller
      *
      * @param Mapper $mapper
      * @param DefaultCrudRenderer $crudRenderer
-     * @param FormFactory $formFactory
      * @param ListViewService $listViewService
      */
-    function __construct(Mapper $mapper, DefaultCrudRenderer $crudRenderer, FormFactory $formFactory, ListViewService $listViewService)
+    function __construct(Mapper $mapper, DefaultCrudRenderer $crudRenderer, ListViewService $listViewService)
     {
         $this->mapper = $mapper;
         $this->crudRenderer = $crudRenderer;
-        $this->formFactory = $formFactory;
         $this->listViewService = $listViewService;
     }
 
@@ -68,9 +66,7 @@ class DefaultCrudActions extends Controller
     {
         $entity = $this->createEntity($mapping->getFullClassName());
 
-        $form = $this->createForm(TaskType::class, $task);
-        
-        $form = $this->formFactory->buildDynamicFormType($entity, $this->formOptions->getOptions($mapping->getMappingKey()));
+        $form = $this->createForm($mapping->getFormTypeClassName(), $entity);
 
         if ($request->getMethod() == 'POST') {
 
@@ -123,7 +119,7 @@ class DefaultCrudActions extends Controller
     {
         $entity = $repository->findOneById($id);
 
-        $form = $this->formFactory->buildDynamicFormType($entity, $this->formOptions->getOptions($mapping->getMappingKey()));
+        $form = $this->createForm($mapping->getFormTypeClassName(), $entity);
 
         if ($request->getMethod() == 'POST') {
 
