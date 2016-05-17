@@ -2,11 +2,10 @@
 
 namespace Stef\SimpleCmsBundle\EntityMapper;
 
-
 use Stef\SimpleCmsBundle\Manager\AbstractObjectManager;
 
-class Mapping {
-
+class Mapping
+{
     /**
      * i.e. 'News'
      *
@@ -52,13 +51,19 @@ class Mapping {
      */
     protected $mappingKey;
 
-    function __construct($mappingKey, $className, $shortBundle, $namespace, AbstractObjectManager $manager)
+    /**
+     * @var string
+     */
+    protected $formTypeClassName;
+
+    function __construct($mappingKey, $className, $shortBundle, $namespace, AbstractObjectManager $manager, $formTypeClassName = 'Stef\SimpleCmsBundle\Form\DynamicType')
     {
         $this->className = trim($className, '\\');
         $this->shortBundle = $shortBundle;
         $this->namespace = trim($namespace, '\\');
         $this->manager = $manager;
         $this->mappingKey = $mappingKey;
+        $this->formTypeClassName = $formTypeClassName;
 
         $this->fullClassName = $this->namespace . '\\' . $this->className;
         $this->repoSelector = $this->shortBundle . ':' . $this->className;
@@ -119,4 +124,12 @@ class Mapping {
     {
         return $this->mappingKey;
     }
-} 
+
+    /**
+     * @return string
+     */
+    public function getFormTypeClassName()
+    {
+        return $this->formTypeClassName;
+    }
+}

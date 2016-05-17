@@ -2,28 +2,23 @@
 
 namespace Stef\SimpleCmsBundle\Form;
 
-use Stef\SimpleCmsBundle\Reflection\ReflectionService;
-
 class FormFactory
 {
-
     protected $factory;
 
-    protected $reflection;
-
-    function __construct(ReflectionService $reflection, \Symfony\Component\Form\FormFactory $factory)
+    function __construct(\Symfony\Component\Form\FormFactory $factory)
     {
-        $this->reflection = $reflection;
         $this->factory = $factory;
     }
 
     /**
      * @param $entity
-     * @param array $formOptionsArray
-     * @return DynamicType
+     * @param string $formType
+     *
+     * @return \Symfony\Component\Form\Form|\Symfony\Component\Form\FormInterface
      */
-    public function buildDynamicFormType($entity, array $formOptionsArray = array())
+    public function buildDynamicFormType($entity, $formType = 'Stef\SimpleCmsBundle\Form\DynamicType')
     {
-        return $this->factory->create(DynamicType::class, $entity);
+        return $this->factory->create($formType, $entity);
     }
 } 

@@ -5,7 +5,6 @@ namespace Stef\SimpleCmsBundle\BaseController;
 use Stef\SimpleCmsBundle\Crud\DefaultCrudActions;
 use Stef\SimpleCmsBundle\EntityMapper\Mapper;
 use Stef\SimpleCmsBundle\EntityMapper\Mapping;
-use Stef\SimpleCmsBundle\Form\FormOptions;
 use Stef\SimpleCmsBundle\Reflection\ReflectionService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -47,14 +46,6 @@ class BaseController extends Controller
     protected function getEntityMapping($mappingKey)
     {
         return $this->getEntityMapper()->getMapping($mappingKey);
-    }
-
-    /**
-     * @return FormOptions
-     */
-    protected function getFormOptions()
-    {
-        return $this->get('stef_simple_cms.form_options');
     }
 
     /**

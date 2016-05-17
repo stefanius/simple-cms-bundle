@@ -5,18 +5,13 @@ namespace Stef\SimpleCmsBundle\Crud;
 use Stef\SimpleCmsBundle\EntityMapper\Mapper;
 use Stef\SimpleCmsBundle\EntityMapper\Mapping;
 use Stef\SimpleCmsBundle\Form\FormFactory;
-use Stef\SimpleCmsBundle\Form\FormOptions;
 use Stef\SimpleCmsBundle\ListView\ListViewService;
 use Stef\SimpleCmsBundle\Reflection\ReflectionService;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultCrudActions
+class DefaultCrudActions extends Controller
 {
-    /**
-     * @var FormOptions
-     */
-    protected $formOptions;
-
     /**
      * @var DefaultCrudRenderer
      */
@@ -42,15 +37,13 @@ class DefaultCrudActions
      *
      * @param Mapper $mapper
      * @param DefaultCrudRenderer $crudRenderer
-     * @param FormOptions $formOptions
      * @param FormFactory $formFactory
      * @param ListViewService $listViewService
      */
-    function __construct(Mapper $mapper, DefaultCrudRenderer $crudRenderer, FormOptions $formOptions, FormFactory $formFactory, ListViewService $listViewService)
+    function __construct(Mapper $mapper, DefaultCrudRenderer $crudRenderer, FormFactory $formFactory, ListViewService $listViewService)
     {
         $this->mapper = $mapper;
         $this->crudRenderer = $crudRenderer;
-        $this->formOptions = $formOptions;
         $this->formFactory = $formFactory;
         $this->listViewService = $listViewService;
     }
@@ -74,6 +67,9 @@ class DefaultCrudActions
     public function create(Request $request, Mapping $mapping)
     {
         $entity = $this->createEntity($mapping->getFullClassName());
+
+        $form = $this->createForm(TaskType::class, $task);
+        
         $form = $this->formFactory->buildDynamicFormType($entity, $this->formOptions->getOptions($mapping->getMappingKey()));
 
         if ($request->getMethod() == 'POST') {
