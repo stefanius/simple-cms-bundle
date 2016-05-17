@@ -2,6 +2,7 @@
 
 namespace Stefanius\SimpleCmsBundle\Form;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -17,7 +18,7 @@ class PageType extends AbstractType
     {
         $builder->add('title', TextType::class);
         $builder->add('slug', TextType::class);
-        $builder->add('body', TextareaType::class);
+        $builder->add('body', CKEditorType::class);
         $builder->add('description', TextareaType::class);
         $builder->add('robotsIndex', CheckboxType::class);
         $builder->add('robotsFollow', CheckboxType::class);
