@@ -15,4 +15,4 @@ class IndexController extends BaseController
             'mappingKeys' => $this->getEntityMapper()->getMappingKeys()
         ]);
     }
-} 
+}

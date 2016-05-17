@@ -1,9 +1,3 @@
-#stef.tmp:
-#  config:
-#    toolbar:
-#      - [name: "basicitems", items: ["source"]]
-#      - [name: "basicstyles", items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']]
-#    uiColor: '#ffffff'
 parameters:
     stef_simple_cms.twig.asset_exists_extension.class: "Stef\\SimpleCmsBundle\\Twig\\Extension\\AssetExistsExtension"
     stef.slugifier.class: "Stefanius\\Slugifier\\Manipulators\\SlugManipulator"
@@ -85,19 +79,3 @@ services:
         arguments: ['@kernel']
         tags:
           - { name: twig.extension }
-
-    stef_key_value.to_array:
-        class: Stef\KeyValueManipulation\Manipulators\KeyValueToArrayManipulator
-        arguments: [':', ';']
-
-    stef_key_value.to_json:
-        class: Stef\KeyValueManipulation\Manipulators\KeyValueToJsonManipulator
-        arguments: [':', ';']
-
-    stef_key_value.to_parameterbag:
-        class: Stef\KeyValueManipulation\Manipulators\KeyValueToParameterBagManipulator
-        arguments: [':', ';']
-
-    stef_simple_cms.key_value_parser:
-        class: Stef\SimpleCmsBundle\KeyValueParser\Parser
-        arguments: ['@stef_key_value.to_array', '@stef_key_value.to_json', '@stef_key_value.to_parameterbag']
