@@ -11,11 +11,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BaseController extends Controller
 {
+    /**
+     * @return mixed
+     */
     protected function getEntityManager()
     {
         return $this->getDoctrine()->getManager();
     }
 
+    /**
+     * @param $repository
+     * 
+     * @return mixed
+     */
     protected function getRepository($repository)
     {
         $em = $this->getEntityManager();
@@ -33,6 +41,7 @@ class BaseController extends Controller
 
     /**
      * @param $mappingKey
+     * 
      * @return Mapping
      */
     protected function getEntityMapping($mappingKey)

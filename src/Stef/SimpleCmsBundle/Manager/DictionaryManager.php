@@ -7,8 +7,8 @@ use Stef\SimpleCmsBundle\Entity\Dictionary;
 use Stefanius\Slugifier\Manipulators\SlugManipulator;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
-class DictionaryManager extends AbstractObjectManager {
-
+class DictionaryManager extends AbstractObjectManager
+{
     protected $repoName = 'StefSimpleCmsBundle:Dictionary';
 
     /**
@@ -40,6 +40,9 @@ class DictionaryManager extends AbstractObjectManager {
         return $dictionary;
     }
 
+    /**
+     * @param $entity
+     */
     public function persist($entity)
     {
         if (is_null($entity->getSlug()) || empty($entity->getSlug())) {
@@ -51,6 +54,7 @@ class DictionaryManager extends AbstractObjectManager {
 
     /**
      * @param $key
+     * 
      * @return mixed
      */
     public function read($key)

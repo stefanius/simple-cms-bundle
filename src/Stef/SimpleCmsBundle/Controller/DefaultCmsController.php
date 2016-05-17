@@ -7,6 +7,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultCmsController extends BaseController
 {
+    /**
+     * @param Request $request
+     * @param $mappingKey
+     * 
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function createAction(Request $request, $mappingKey)
     {
         return $this->getDefaultCrudActions()->create($request, $this->getEntityMapping($mappingKey));

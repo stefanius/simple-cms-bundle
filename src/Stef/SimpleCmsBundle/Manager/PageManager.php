@@ -7,8 +7,8 @@ use Stef\SimpleCmsBundle\Entity\News;
 use Stefanius\Slugifier\Manipulators\SlugManipulator;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
-class PageManager extends AbstractObjectManager {
-
+class PageManager extends AbstractObjectManager
+{
     /**
      * @var SlugManipulator
      */
@@ -41,6 +41,9 @@ class PageManager extends AbstractObjectManager {
         return $news;
     }
 
+    /**
+     * @param $entity
+     */
     public function persist($entity)
     {
         if (is_null($entity->getSlug()) || empty($entity->getSlug())) {

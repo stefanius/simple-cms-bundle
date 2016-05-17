@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Page extends AbstractCmsContent
 {
-
     /**
      * @ORM\Column(type="text", nullable=true)
      */

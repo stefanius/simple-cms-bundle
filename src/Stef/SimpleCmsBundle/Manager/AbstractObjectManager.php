@@ -6,8 +6,8 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Entity;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
-abstract class AbstractObjectManager {
-
+abstract class AbstractObjectManager
+{
     /**
      * @var ObjectManager
      */
@@ -37,6 +37,9 @@ abstract class AbstractObjectManager {
         $this->om->remove($entity);
     }
 
+    /**
+     *
+     */
     public function flush() {
         $this->om->flush();
     }
@@ -91,6 +94,11 @@ abstract class AbstractObjectManager {
         return $entity;
     }
 
+    /**
+     * @param $maxResults
+     *
+     * @return mixed
+     */
     public function getLatestEntries($maxResults)
     {
         $qb = $this->om->getRepository($this->repoName)->createQueryBuilder('e');
@@ -102,6 +110,9 @@ abstract class AbstractObjectManager {
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * @return mixed
+     */
     public function getAllRecords()
     {
         $qb = $this->om->getRepository($this->repoName)->createQueryBuilder('e');
@@ -111,6 +122,11 @@ abstract class AbstractObjectManager {
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * @param array $params
+     *
+     * @return mixed
+     */
     public function simpleQueryBuilding(array $params)
     {
         $qb = $this->om->getRepository($this->repoName)->createQueryBuilder('e');

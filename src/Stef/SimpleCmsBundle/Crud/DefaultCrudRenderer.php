@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Router;
 
-class DefaultCrudRenderer {
-
+class DefaultCrudRenderer
+{
     /**
      * @var TwigEngine
      */
@@ -20,43 +20,75 @@ class DefaultCrudRenderer {
      */
     protected $router;
 
+    /**
+     * DefaultCrudRenderer constructor.
+     *
+     * @param TwigEngine $templating
+     * @param Router $router
+     */
     function __construct(TwigEngine $templating, Router $router)
     {
         $this->templating = $templating;
         $this->router = $router;
     }
 
+    /**
+     * @param array $parameters
+     *
+     * @return Response
+     */
     public function renderReadView(array $parameters = array())
     {
         return $this->render('StefSimpleCmsBundle:Cms:read.html.twig', $parameters);
     }
 
+    /**
+     * @param array $parameters
+     *
+     * @return Response
+     */
     public function renderUpdateView(array $parameters = array())
     {
         return $this->render('StefSimpleCmsBundle:Cms:update.html.twig', $parameters);
     }
 
+    /**
+     * @param $form
+     */
     public function renderDeleteView($form)
     {
         // TODO: Implement renderDeleteView() method.
     }
 
+    /**
+     * @param array $parameters
+     *
+     * @return Response
+     */
     public function renderCreateView(array $parameters = array())
     {
         return $this->render('StefSimpleCmsBundle:Cms:create.html.twig', $parameters);
     }
 
+    /**
+     * @param array $parameters
+     *
+     * @return Response
+     */
     public function renderIndexView(array $parameters = array())
     {
         return $this->render('StefSimpleCmsBundle:Cms:index.html.twig', $parameters);
     }
 
+    /**
+     * @param $mappingKey
+     *
+     * @return RedirectResponse
+     */
     public function cmsRedirect($mappingKey)
     {
         return $this->redirect($this->generateUrl('stef_simple_cms_bundle_index', ['mappingKey' => $mappingKey]));
     }
-
-    /* Methods below this line are copied (and modified if needed) from the Symfony Controller class. */
 
     /**
      * Renders a view.
@@ -97,4 +129,4 @@ class DefaultCrudRenderer {
     {
         return $this->router->generate($route, $parameters, $referenceType);
     }
-} 
+}
