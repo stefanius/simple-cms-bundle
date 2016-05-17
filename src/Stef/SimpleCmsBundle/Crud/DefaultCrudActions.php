@@ -4,23 +4,16 @@ namespace Stef\SimpleCmsBundle\Crud;
 
 use Stef\SimpleCmsBundle\EntityMapper\Mapper;
 use Stef\SimpleCmsBundle\EntityMapper\Mapping;
-use Stef\SimpleCmsBundle\Form\FormFactory;
 use Stef\SimpleCmsBundle\ListView\ListViewService;
 use Stef\SimpleCmsBundle\Reflection\ReflectionService;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultCrudActions extends Controller
+class DefaultCrudActions
 {
     /**
      * @var DefaultCrudRenderer
      */
     protected $crudRenderer;
-
-    /**
-     * @var FormFactory
-     */
-    protected $formFactory;
 
     /**
      * @var Mapper
@@ -62,11 +55,11 @@ class DefaultCrudActions extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function create(Request $request, Mapping $mapping)
+    public function create(Request $request, Mapping $mapping, $formFactory)
     {
         $entity = $this->createEntity($mapping->getFullClassName());
 
-        $form = $this->createForm($mapping->getFormTypeClassName(), $entity);
+        $form = $formFactory->create($mapping->getFormTypeClassName(), $entity);
 
         if ($request->getMethod() == 'POST') {
 
@@ -115,11 +108,11 @@ class DefaultCrudActions extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function update(Request $request, Mapping $mapping, $repository, $id)
+    public function update(Request $request, Mapping $mapping, $repository, $id, $formFactory)
     {
         $entity = $repository->findOneById($id);
 
-        $form = $this->createForm($mapping->getFormTypeClassName(), $entity);
+        $form = $formFactory->create($mapping->getFormTypeClassName(), $entity);
 
         if ($request->getMethod() == 'POST') {
 
