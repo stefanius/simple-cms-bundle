@@ -24,25 +24,6 @@ class FormFactory
      */
     public function buildDynamicFormType($entity, array $formOptionsArray = array())
     {
-        $dynamic = new DynamicType();
-        $dynamic->setFields($this->readAllPropertiesFromEntity($entity));
-        $dynamic->setName('test');
-        $dynamic->setFormOptionsArray($formOptionsArray);
-
         return $this->factory->create(DynamicType::class, $entity);
-    }
-
-    protected function readAllPropertiesFromEntity($entity)
-    {
-        $normalized = [];
-        $props = $this->reflection->getProperties($entity);
-
-        foreach ($props as $prop) {
-            $normalized[$prop->getName()]['name'] = $prop->getName();
-            $normalized[$prop->getName()]['modifiers'] = $prop->getModifiers();
-            $normalized[$prop->getName()]['doc_comment'] = $prop->getDocComment();
-        }
-
-        return $normalized;
     }
 } 

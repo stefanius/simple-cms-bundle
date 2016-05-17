@@ -2,6 +2,7 @@
 
 namespace Stef\SimpleCmsBundle\Form;
 
+use Stef\SimpleCmsBundle\Reflection\ReflectionService;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -60,6 +61,7 @@ class DynamicType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->fields = $this->getFields($options['data']);
         $formOptions = $this->defaultFormOptions($this->formOptionsArray);
 
         foreach ($this->fields as $field) {
@@ -100,4 +102,21 @@ class DynamicType extends AbstractType
             'csrf_protection'   => false,
         ));
     }
+
+    protected function getFields($entity)
+    {
+        $reflection = new ReflectionService();
+
+        $fields = [];
+        $props = $reflection->getProperties($entity);
+
+        foreach ($props as $prop) {
+            $fields[$prop->getName()]['name'] = $prop->getName();
+            $fields[$prop->getName()]['modifiers'] = $prop->getModifiers();
+            $fields[$prop->getName()]['doc_comment'] = $prop->getDocComment();
+        }
+
+        return $fields;
+    }
+
 }
